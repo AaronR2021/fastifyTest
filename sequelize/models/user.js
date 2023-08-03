@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const User = sequelize.define('users', {
+  const User = sequelize.define("users", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -25,14 +25,15 @@ module.exports = (sequelize) => {
     },
   });
   // Sync models with the database
-sequelize.sync({ alter: true })
-.then(() => {
-  console.log('sync called user')
-  console.log('Models synchronized with the database.>>>>>');
-})
-.catch(error => {
-  console.error('Error:', error);
-});
+  sequelize
+    .sync({ alter: true })
+    .then(() => {
+      console.log("sync called user");
+      console.log("Models synchronized with the database.>>>>>");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 
   return User;
 };
