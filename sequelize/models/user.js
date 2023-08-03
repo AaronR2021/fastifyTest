@@ -13,7 +13,22 @@ module.exports = (sequelize) => {
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: true,
+    },
+    password: {
+      type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: 'default-password'
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'male'
+    },
+    age:{
+      type: DataTypes.INTEGER,
+      allowNull:true
+
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -24,12 +39,12 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   });
-  // Sync models with the database
+
+  // Syncs all models with the database
   sequelize
-    .sync({ alter: true })
+    .sync({ alter: true,logging: false  })
     .then(() => {
-      console.log("sync called user");
-      console.log("Models synchronized with the database.>>>>>");
+      console.log("Models synchronized with the database.");
     })
     .catch((error) => {
       console.error("Error:", error);
