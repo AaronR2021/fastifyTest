@@ -1,10 +1,10 @@
 //!import dependencies
 const { Sequelize } = require("sequelize");
-const dbConnect = require("../../../sequelize/config/config")();
+const dbConnect = require("../sequelize/config/config")();
 const sequelize = new Sequelize(dbConnect);
 //!import models
-const User = require("../../../sequelize/models/user")(sequelize);
-const Comment = require("../../../sequelize/models/comment")(sequelize);
+const User = require("../sequelize/tables/user")(sequelize);
+const Comment = require("../sequelize/tables/comment")(sequelize);
 
 //!Database queries
 async function findAllUsersQuery() {

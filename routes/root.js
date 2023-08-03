@@ -1,11 +1,14 @@
 "use strict";
 const {
-  findAllUsers,
-  findAllComment,
-} = require("../functionalComponents/user/userResponse/user");
-const { user } = require("../swaggerSchema/schema");
+  findAllUsersController,
+  findAllCommentController,
+} = require("../controller/users/index");
+const { user,admin } = require("../swaggerSchema/groupTags/schema");
 
 module.exports = async function (fastify, opts) {
-  fastify.get("/users", { schema: user.schema, handler: findAllUsers });
-  fastify.get("/comments", { schema: user.schema, handler: findAllComment });
+  //! API DEFINATION
+  fastify.get("/users", { schema: user.schema, handler: findAllUsersController });
+  fastify.get("/comments", { schema: user.schema, handler: findAllCommentController });
+  fastify.get("/userA", { schema: admin.schema, handler: findAllUsersController });
+  fastify.get("/commentB", { schema: admin.schema, handler: findAllCommentController });
 };

@@ -5,6 +5,7 @@ const admin = {
   },
 };
 
+
 const user = {
   schema: {
     tags: ["User"],
